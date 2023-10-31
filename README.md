@@ -29,7 +29,9 @@ Leave it running in the background and await an email with subject **Ticket Avai
 Take that normies! 🤓
 
 Feed:
+
 ![Twickets Feed](images/feed.png)
 
 Logs:
+
 ![Console Logs](images/logs.png)
