@@ -1,13 +1,13 @@
 require('dotenv').config()
 
 const puppeteer = require('puppeteer');
+const nodemailer = require('nodemailer');
 
 const URL = 'https://www.twickets.live/catalog/browse';
 // personalise
 const ARTIST = 'Norah Jones'
 const LOCATION = 'London'
 
-const nodemailer = require('nodemailer');
 
 async function sendEmail() {
     let transporter = nodemailer.createTransport({
