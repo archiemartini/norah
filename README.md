@@ -16,6 +16,10 @@ npm install
 Edit `norah.js` constants to fit your purposes, see `ARTIST` and `LOCATION`, also edit the email information in `sendEmail()`.
 Create a `.env` in the root directory and add your personal Google App Password as `NODEMAILER_GOOGLE_PASSWORD`. For more information see [here](https://www.educative.io/answers/how-to-use-nodemailer)
 
+Once ready run...
+```
+node
+```
 In the node REPL run...
 ```
 >.load norah.js
