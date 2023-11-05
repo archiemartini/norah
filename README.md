@@ -1,6 +1,6 @@
 # norah - A Twickets Crawler
 
-A simple node app I made to search for Norah Jones tickets for my partner (😷). Reading online it seems that Twickets' own alert system is slightly delayed and highly contended by various other fans desperate to get face-value tickets, your best bet is to constantly refresh the feed. 
+A simple node app I made to search for Norah Jones tickets for my partner. Reading online it seems that Twickets' own alert system is slightly delayed and highly contended by various other fans desperate to get face-value tickets, your best bet is to constantly refresh the feed. 
 
 **norah.js** will crawl over the top 3 elements in the Twickets feed every 10 seconds
 
