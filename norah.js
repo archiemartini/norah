@@ -22,7 +22,7 @@ const gmailConfig = {
   service: "gmail",
   auth: {
     user: env.GMAIL_USER || "",
-    pass: env.GMAIL_PASSWORD || "",
+    pass: env.GMAIL_PASS || "",
   },
 };
 let emailSent = false;
@@ -36,7 +36,7 @@ async function sendEmail() {
     const info = await transporter.sendMail(
       {
         from: env.FROM_EMAIL || "",
-        to: env.TO_EMAIL || "",
+        to: env.EMAIL_TO || "",
         subject: env.EMAIL_SUBJECT || "Ticket Available",
         text: env.EMAIL_TEXT || "The ticket you were waiting for is now available!" + ` ${URL}`,
       },
