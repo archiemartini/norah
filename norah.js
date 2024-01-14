@@ -140,6 +140,7 @@ async function startMonitoring() {
 process.on("SIGINT", () => {
   console.log("Stopping the monitor...");
   monitoring = false;
+  process.exit();
 });
 
 startMonitoring();
