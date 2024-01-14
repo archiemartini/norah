@@ -25,7 +25,6 @@ const gmailConfig = {
     pass: env.GMAIL_PASS || "",
   },
 };
-let emailSent = false;
 let monitoring = true;
 
 async function sendEmail() {
@@ -33,22 +32,22 @@ async function sendEmail() {
 
   console.log("Sending email...");
   try {
-    const info = await transporter.sendMail(
+    return await transporter.sendMail(
       {
-        from: env.FROM_EMAIL || "",
+        from: env.EMAIL_FROM || "",
         to: env.EMAIL_TO || "",
         subject: env.EMAIL_SUBJECT || "Ticket Available",
-        text: env.EMAIL_TEXT || "The ticket you were waiting for is now available!" + ` ${URL}`,
+        text: (env.EMAIL_TEXT || "The ticket you were waiting for is now available! ") + ` ${URL}`,
       },
       (err, info) => {
         if (err) {
-          console.error(err);
+          console.error(`Error sending email: ${JSON.stringify(err)}, ${JSON.stringify(info)}`);
         } else {
-          console.log(info);
+          console.log("Email sent!");
+          // console.log(info);
         }
       }
     );
-    return info;
   } catch (e) {
     console.error(e);
   }
@@ -114,10 +113,9 @@ async function monitor() {
     const available = await checkTicketAvailability();
     if (available) {
       console.log("Ticket is available!");
-      if (!emailSent) {
-        await sendEmail();
-        emailSent = true;
-      }
+      sendEmail().finally(() => {
+        monitoring = false;
+      });
     } else {
       const INTERVAL_IN_SECONDS = Math.floor(
         Math.random() * (120 - 10 + 1) + 10
